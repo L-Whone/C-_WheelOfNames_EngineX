@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "OutGame\\PhysicsComponent.obj",
+            "outputs": [
+                "OutGame\\PhysicsComponent.h_5C8FE60B4EEB76D2.ifc.dt.module.json",
+                "OutGame\\PhysicsComponent.h_5C8FE60B4EEB76D2.ifc.dt.d.json",
+                "OutGame\\PhysicsComponent.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\pg29vi\\Desktop\\PG29KenArigo_AOOOP_a1\\EngineXForStudent\\Game\\Public\\Components\\PhysicsComponent.h",
+                    "source-path": "c:\\users\\pg29vi\\desktop\\pg29kenarigo_aooop_a1\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

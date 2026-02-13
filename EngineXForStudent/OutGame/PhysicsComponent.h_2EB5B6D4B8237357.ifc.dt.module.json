@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "OutGame\\PhysicsComponent.obj",
+            "outputs": [
+                "OutGame\\PhysicsComponent.h_2EB5B6D4B8237357.ifc.dt.module.json",
+                "OutGame\\PhysicsComponent.h_2EB5B6D4B8237357.ifc.dt.d.json",
+                "OutGame\\PhysicsComponent.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\pg29ken\\Documents\\T3CPP\\EngineXForStudent\\Game\\Public\\Components\\PhysicsComponent.h",
+                    "source-path": "c:\\users\\pg29ken\\documents\\t3cpp\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
