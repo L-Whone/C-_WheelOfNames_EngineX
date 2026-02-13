@@ -19,8 +19,8 @@
   Line.cpp
   PhysicsSystem.cpp
   Generating Code...
-C:\Users\pg29vi\Desktop\PG29ViTran_AOOOP_a1\EngineXForStudent\Game\Private\Components\CircleColliderComponent.cpp(47,1): warning C4715: 'CircleColliderComponent::IsCollisionDetected': not all control paths return a value
-EngineXd.lib(Engine.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(Engine.obj)' or at 'C:\Users\pg29vi\Desktop\PG29ViTran_AOOOP_a1\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-EngineXd.lib(RenderPacket.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(RenderPacket.obj)' or at 'C:\Users\pg29vi\Desktop\PG29ViTran_AOOOP_a1\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-EngineXd.lib(System.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(System.obj)' or at 'C:\Users\pg29vi\Desktop\PG29ViTran_AOOOP_a1\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-  GameEngineX.vcxproj -> C:\Users\pg29vi\Desktop\PG29ViTran_AOOOP_a1\EngineXForStudent\Build\GameEngineXd.exe
+C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Game\Private\Components\CircleColliderComponent.cpp(47,1): warning C4715: 'CircleColliderComponent::IsCollisionDetected': not all control paths return a value
+EngineXd.lib(Engine.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(Engine.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+EngineXd.lib(RenderPacket.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(RenderPacket.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+EngineXd.lib(System.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(System.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+  GameEngineX.vcxproj -> C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\GameEngineXd.exe
