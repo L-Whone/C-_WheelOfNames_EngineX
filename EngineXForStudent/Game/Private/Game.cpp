@@ -12,6 +12,8 @@
 #include "Engine/Public/SDL.h"
 
 #include "Game/Public/Actors/Ball.h"
+#include "Game/Public/Actors/HUD.h"
+#include "Game/Public/Components/TextRenderComponent.h"
 #include "Game/Public/ComponentTypes.h"
 #include "Game/Public/Subsystems/PhysicsSystem.h"
 #include "Game/Public/Subsystems/RenderSystem.h"
@@ -25,10 +27,10 @@ const char* gWindowName = "PG29 Ken Vi Diana Game Engine"; // What the window is
 //-----------------------------------------------------------------
 
 MyGame::MyGame()
-	: mEngine( nullptr ) // Rendering
-	, mFontID( -1 )
-	, mUp( false )
-	, mDown( false )
+	: mEngine(nullptr) // Rendering
+	, mFontID(-1)
+	, mUp(false)
+	, mDown(false)
 {
 }
 
@@ -53,6 +55,12 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 
 	float Radius = 25.0f;
 
+	exColor White;
+	White.mColor[0] = 255;
+	White.mColor[1] = 255;
+	White.mColor[2] = 255;
+	White.mColor[3] = 255;
+
 	exColor Color1;
 	Color1.mColor[0] = 255;
 	Color1.mColor[1] = 50;
@@ -71,26 +79,23 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 	Color3.mColor[2] = 150;
 	Color3.mColor[3] = 255;
 
-	exColor Color4;
-	Color4.mColor[0] = 130;
-	Color4.mColor[1] = 170;
-	Color4.mColor[2] = 150;
-	Color4.mColor[3] = 255;
-
 	mBall_First = std::make_shared<Ball>(Radius, Color1);
 	mBall_First = Actor::SpawnActorOfType<Ball>(exVector2(200.0f, 300.0f), Radius, Color1);
 
 	mBall_Second = Actor::SpawnActorOfType<Ball>(exVector2(200.0f, 100.0f), Radius, Color2);
 
-	mBox = Actor::SpawnActorOfType<Box>(exVector2(500.0f,200.0f),200.0f, 300.0f, Color3);
-
-	// LINE RENDERER
-	mLine = Actor::SpawnActorOfType<Line>(exVector2(0.0f, 0.0f), exVector2(100.0f, 100.0f), exVector2(500.0f, 500.0f), Color4);
+	//mBox = Actor::SpawnActorOfType<Box>(exVector2(500.0f,200.0f),200.0f, 300.0f, Color3);
 
 	if (std::shared_ptr<PhysicsComponent> BallPhysicsComp = mBall_Second->GetComponentOfType<PhysicsComponent>())
 	{
 		BallPhysicsComp->SetVelocity(exVector2(0.0f, 0.5f));
 	}
+
+	mHUD = std::make_shared<HUD>(White, String("Score: 0"), String("Resources/Montserrat-Regular.ttf"),
+		32, exVector2{ 0.0f, 0.0f }, 10);
+
+	mHUD->BeginPlay();
+	mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
 }
 
 //-----------------------------------------------------------------
@@ -106,7 +111,7 @@ const char* MyGame::GetWindowName() const
 
 // This changes background color
 /// <param name="color"></param>
-void MyGame::GetClearColor( exColor& color ) const
+void MyGame::GetClearColor(exColor& color) const
 {
 	color.mColor[0] = 128; // R
 	color.mColor[1] = 128; // G
@@ -118,7 +123,7 @@ void MyGame::GetClearColor( exColor& color ) const
 //-----------------------------------------------------------------
 
 // Registers different types of events (key presses, mouse clicks, etc...)
-void MyGame::OnEvent( SDL_Event* pEvent )
+void MyGame::OnEvent(SDL_Event* pEvent)
 {
 }
 
@@ -129,7 +134,7 @@ void MyGame::OnEventsConsumed()
 {
 	// nKeys influenced by keys -- reads bits of the int
 	int nKeys = 0;
-	const Uint8 *pState = SDL_GetKeyboardState( &nKeys );
+	const Uint8* pState = SDL_GetKeyboardState(&nKeys);
 
 	// Keyboard inputs are set as enums
 	mUp = pState[SDL_SCANCODE_UP];
@@ -140,7 +145,7 @@ void MyGame::OnEventsConsumed()
 //-----------------------------------------------------------------
 
 // Fires every frame and returns the time between each frame
-void MyGame::Run( float fDeltaT )
+void MyGame::Run(float fDeltaT)
 {
 	RENDER_ENGINE.RenderUpdate(mEngine);
 
@@ -163,7 +168,7 @@ void MyGame::Run( float fDeltaT )
 	{
 		BallPhysicsComp->SetVelocity(BallVelocity);
 	}
-	
+
 	PHYSICS_ENGINE.PhysicsUpdate(fDeltaT);
 	//mBall->SetBallPosition(mTextPosition);
 }

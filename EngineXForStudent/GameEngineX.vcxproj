@@ -156,6 +156,7 @@
     <ClInclude Include="Game\Public\Components\LineRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RectangleRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RenderComponent.h" />
+    <ClInclude Include="Game\Public\Components\TextRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\TransformComponent.h" />
     <ClInclude Include="Game\Public\ComponentTypes.h" />
     <ClInclude Include="Game\Public\Game.h" />
@@ -166,11 +167,14 @@
     <ClInclude Include="Game\Public\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\Downloads\PG29Diana_AOOP_a1\EngineXForStudent\Game\Private\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Actor.cpp" />
     <ClCompile Include="Game\Private\Actors\Ball.cpp" />
+    <ClCompile Include="Game\Private\Actors\HUD.cpp" />
     <ClCompile Include="Game\Private\Component.cpp" />
     <ClCompile Include="Game\Private\Components\CircleColliderComponent.cpp" />
     <ClCompile Include="Game\Private\Components\RectangleRenderComponent.cpp" />
+    <ClCompile Include="Game\Private\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Game.cpp" />
     <ClCompile Include="Game\Private\Main.cpp" />
     <ClCompile Include="Game\Private\Components\TransformComponent.cpp" />
@@ -181,8 +185,73 @@
     <ClCompile Include="Game\Private\Actors\Box.cpp" />
     <ClCompile Include="Game\Private\Components\LineRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Actors\Line.cpp" />
+    <ClCompile Include="Game\Public\Actors\HUD.h" />
     <ClCompile Include="Game\Public\Components\PhysicsComponent.h" />
     <ClCompile Include="Game\Private\Subsystems\PhysicsSystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Out\EngineX.lib" />
+    <Library Include="Out\EngineXd.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="OutGame\Actor.obj" />
+    <Object Include="OutGame\Ball.obj" />
+    <Object Include="OutGame\Box.obj" />
+    <Object Include="OutGame\CircleColliderComponent.obj" />
+    <Object Include="OutGame\CircleRenderComponent.obj" />
+    <Object Include="OutGame\Component.obj" />
+    <Object Include="OutGame\Game.obj" />
+    <Object Include="OutGame\Line.obj" />
+    <Object Include="OutGame\LineRenderComponent.obj" />
+    <Object Include="OutGame\Main.obj" />
+    <Object Include="OutGame\PhysicsComponent.h.obj" />
+    <Object Include="OutGame\PhysicsComponent.obj" />
+    <Object Include="OutGame\PhysicsSystem.obj" />
+    <Object Include="OutGame\RectangleRenderComponent.obj" />
+    <Object Include="OutGame\RenderComponent.obj" />
+    <Object Include="OutGame\RenderSystem.obj" />
+    <Object Include="OutGame\TransformComponent.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="OutGame\GameEngineX.log" />
+    <Text Include="OutGame\GameEngineX.vcxproj.FileListAbsolute.txt" />
+    <Text Include="OutGame\GameEngineXd.Build.CppClean.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OutGame\GameEngineX.tlog\CL.command.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\Cl.items.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\CL.read.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\CL.write.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\GameEngineX.lastbuildstate" />
+    <None Include="OutGame\GameEngineX.tlog\link.command.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\link.read.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\link.secondary.1.tlog" />
+    <None Include="OutGame\GameEngineX.tlog\link.write.1.tlog" />
+    <None Include="OutGame\GameEngineXd.exe.recipe" />
+    <None Include="OutGame\GameEngineXd.ilk" />
+    <None Include="OutGame\GameEngineX_MD.tlog\CL.command.1.tlog" />
+    <None Include="OutGame\GameEngineX_MD.tlog\Microsoft.Build.CPPTasks.CL.read.1.tlog" />
+    <None Include="OutGame\GameEngineX_MD.tlog\Microsoft.Build.CPPTasks.CL.write.1.tlog" />
+    <None Include="OutGame\PhysicsComponent.h.ifc" />
+    <None Include="OutGame\PhysicsComponent.h.ifc.d.json" />
+    <None Include="OutGame\physicscomponent.h.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_2EB5B6D4B8237357.ifc.dt.d.json" />
+    <None Include="OutGame\PhysicsComponent.h_2EB5B6D4B8237357.ifc.dt.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_2EB5B6D4B8237357.ifc.dt.module.json.command" />
+    <None Include="OutGame\PhysicsComponent.h_41CA0EACFA2F6F84.ifc.dt.d.json" />
+    <None Include="OutGame\PhysicsComponent.h_41CA0EACFA2F6F84.ifc.dt.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_41CA0EACFA2F6F84.ifc.dt.module.json.command" />
+    <None Include="OutGame\PhysicsComponent.h_5C8FE60B4EEB76D2.ifc.dt.d.json" />
+    <None Include="OutGame\PhysicsComponent.h_5C8FE60B4EEB76D2.ifc.dt.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_5C8FE60B4EEB76D2.ifc.dt.module.json.command" />
+    <None Include="OutGame\PhysicsComponent.h_7C2691849DC49AD7.ifc.dt.d.json" />
+    <None Include="OutGame\PhysicsComponent.h_7C2691849DC49AD7.ifc.dt.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_7C2691849DC49AD7.ifc.dt.module.json.command" />
+    <None Include="OutGame\PhysicsComponent.h_823739E874196193.ifc.dt.d.json" />
+    <None Include="OutGame\PhysicsComponent.h_823739E874196193.ifc.dt.module.json" />
+    <None Include="OutGame\PhysicsComponent.h_823739E874196193.ifc.dt.module.json.command" />
+    <None Include="OutGame\vc143.idb" />
+    <None Include="OutGame\vc143.pdb" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

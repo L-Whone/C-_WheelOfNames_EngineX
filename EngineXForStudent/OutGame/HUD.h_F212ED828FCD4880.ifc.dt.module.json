@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "OutGame\\HUD.obj",
+            "outputs": [
+                "OutGame\\HUD.h_F212ED828FCD4880.ifc.dt.module.json",
+                "OutGame\\HUD.h_F212ED828FCD4880.ifc.dt.d.json",
+                "OutGame\\HUD.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\diana\\Desktop\\VFS\\Term3\\C++\\C-_WheelOfNames_EngineX\\EngineXForStudent\\Game\\Public\\Actors\\HUD.h",
+                    "source-path": "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\actors\\hud.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

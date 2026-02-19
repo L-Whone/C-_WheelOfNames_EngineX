@@ -1,12 +1,27 @@
-﻿  Scanning sources for module dependencies...
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1129,5): warning MSB8027: Two or more files with the name of TextRenderComponent.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are ..\..\..\..\..\..\Downloads\PG29Diana_AOOP_a1\EngineXForStudent\Game\Private\Components\TextRenderComponent.cpp, Game\Private\Components\TextRenderComponent.cpp.
+  Scanning sources for module dependencies...
+  HUD.h
   PhysicsComponent.h
   Compiling...
   PhysicsComponent.h
+  HUD.h
+C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Engine\Public\EngineInterface.h(15,11): warning C5260: the constant variable 'kEngineVersion' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
+  (compiling source file 'Game/Public/Actors/HUD.h')
+  
+C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Engine\Public\EngineInterface.h(17,11): warning C5260: the constant variable 'kViewportWidth' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
+  (compiling source file 'Game/Public/Actors/HUD.h')
+  
+C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Engine\Public\EngineInterface.h(18,11): warning C5260: the constant variable 'kViewportHeight' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
+  (compiling source file 'Game/Public/Actors/HUD.h')
+  
+  TextRenderComponent.cpp
   Actor.cpp
   Ball.cpp
+  HUD.cpp
   Component.cpp
   CircleColliderComponent.cpp
   RectangleRenderComponent.cpp
+  TextRenderComponent.cpp
   Game.cpp
   Main.cpp
   TransformComponent.cpp
@@ -19,8 +34,26 @@
   Line.cpp
   PhysicsSystem.cpp
   Generating Code...
-C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Game\Private\Components\CircleColliderComponent.cpp(47,1): warning C4715: 'CircleColliderComponent::IsCollisionDetected': not all control paths return a value
-EngineXd.lib(Engine.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(Engine.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-EngineXd.lib(RenderPacket.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(RenderPacket.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-EngineXd.lib(System.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(System.obj)' or at 'C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
-  GameEngineX.vcxproj -> C:\Users\Public\Repos\C-_WheelOfNames_EngineX\EngineXForStudent\Build\GameEngineXd.exe
+C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Game\Private\Components\CircleColliderComponent.cpp(47,1): warning C4715: 'CircleColliderComponent::IsCollisionDetected': not all control paths return a value
+OutGame\TextRenderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Actor.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Ball.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Box.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\CircleColliderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\CircleRenderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Component.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Game.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Line.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\LineRenderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\Main.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\PhysicsComponent.h.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\PhysicsComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\PhysicsSystem.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\RectangleRenderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\RenderComponent.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\RenderSystem.obj : warning LNK4042: object specified more than once; extras ignored
+OutGame\TransformComponent.obj : warning LNK4042: object specified more than once; extras ignored
+EngineXd.lib(Engine.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(Engine.obj)' or at 'C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+EngineXd.lib(RenderPacket.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(RenderPacket.obj)' or at 'C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+EngineXd.lib(System.obj) : warning LNK4099: PDB 'EngineX.pdb' was not found with 'EngineXd.lib(System.obj)' or at 'C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Build\EngineX.pdb'; linking object as if no debug info
+  GameEngineX.vcxproj -> C:\Users\diana\Desktop\VFS\Term3\C++\C-_WheelOfNames_EngineX\EngineXForStudent\Build\GameEngineXd.exe

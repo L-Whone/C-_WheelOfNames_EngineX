@@ -5,14 +5,14 @@
         {
             "primary-output": "OutGame\\PhysicsComponent.h.obj",
             "outputs": [
-                "C:\\Users\\Public\\Repos\\C-_WheelOfNames_EngineX\\EngineXForStudent\\OutGame\\vc143.pdb",
+                "C:\\Users\\diana\\Desktop\\VFS\\Term3\\C++\\C-_WheelOfNames_EngineX\\EngineXForStudent\\OutGame\\vc143.pdb",
                 "OutGame\\",
-                "C:\\Users\\Public\\Repos\\C-_WheelOfNames_EngineX\\EngineXForStudent\\OutGame\\PhysicsComponent.h.ifc"
+                "C:\\Users\\diana\\Desktop\\VFS\\Term3\\C++\\C-_WheelOfNames_EngineX\\EngineXForStudent\\OutGame\\PhysicsComponent.h.ifc"
             ],
             "provides": [
                 {
                     "logical-name": "Game\\Public\\Components\\PhysicsComponent.h",
-                    "source-path": "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
+                    "source-path": "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
                     "lookup-method": "absolute"
                 }
             ],

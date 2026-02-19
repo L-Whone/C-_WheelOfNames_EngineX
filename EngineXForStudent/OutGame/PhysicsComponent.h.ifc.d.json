@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
+        "Source": "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\components\\physicscomponent.h",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\component.h",
-            "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\utils.h",
+            "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\component.h",
+            "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\utils.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\memory",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\vcruntime.h",
@@ -144,8 +144,8 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\clocale",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\locale.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.44.35207\\include\\ostream",
-            "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\lifetimeinterface.h",
-            "c:\\users\\public\\repos\\c-_wheelofnames_enginex\\enginexforstudent\\engine\\public\\enginetypes.h"
+            "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\game\\public\\lifetimeinterface.h",
+            "c:\\users\\diana\\desktop\\vfs\\term3\\c++\\c-_wheelofnames_enginex\\enginexforstudent\\engine\\public\\enginetypes.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -13,6 +13,8 @@
 #include "Game/Public/Actors/Ball.h"
 #include "Game/Public/Actors/Box.h"
 #include "Game/Public/Actors/Line.h"
+#include "Game/Public/Actors/HUD.h"
+#include "Game/Public/Components/TextRenderComponent.h"
 
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -36,16 +38,18 @@ public:
 
 private:
 
-	exEngineInterface*			mEngine;
+	exEngineInterface*						mEngine;
 
-	int							mFontID;
+	int										mFontID;
 
-	bool						mUp;
-	bool						mDown;
+	bool									mUp;
+	bool									mDown;
 
-	exVector2					mTextPosition;
-	std::shared_ptr<Ball>		mBall_First;
-	std::shared_ptr<Ball>		mBall_Second;
-	std::shared_ptr<Box>		mBox;
-	std::shared_ptr<Line>         mLine;
+	exVector2								mTextPosition;
+	std::shared_ptr<Ball>					mBall_First;
+	std::shared_ptr<Ball>					mBall_Second;
+	std::shared_ptr<Box>					mBox;
+	std::shared_ptr<Line>					mLine;
+	std::shared_ptr<HUD>					mHUD;
+	std::shared_ptr<TextRenderComponent> 	mHUDText;
 };
