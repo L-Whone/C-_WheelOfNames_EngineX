@@ -15,6 +15,7 @@
 #include "Game/Public/Actors/Line.h"
 #include "Game/Public/Actors/HUD.h"
 #include "Game/Public/Components/TextRenderComponent.h"
+#include "Game/Public/Components/WinnerPopupComponent.h"
 
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -52,4 +53,5 @@ private:
 	std::shared_ptr<Line>					mLine;
 	std::shared_ptr<HUD>					mHUD;
 	std::shared_ptr<TextRenderComponent> 	mHUDText;
+	WinnerPopup								mWinnerPopup;
 };

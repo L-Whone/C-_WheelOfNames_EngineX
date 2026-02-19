@@ -96,6 +96,15 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 
 	mHUD->BeginPlay();
 	mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
+
+	exColor header; 
+	header.mColor[0] = 130;
+	header.mColor[1] = 170;
+	header.mColor[2] = 150;
+	header.mColor[3] = 255;
+
+	mWinnerPopup.Show("We have a winner!", "Diana", header);
+	//mWinnerPopup.Hide();
 }
 
 //-----------------------------------------------------------------
