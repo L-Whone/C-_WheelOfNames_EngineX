@@ -150,6 +150,7 @@ void SpinningWheelActor::UpdateTickerPosition()
 
 void SpinningWheelActor::UpdateComponentPositions()
 {
+    // center of wheel
     exVector2 Center = { 0.0f, 0.0f };
     if (auto TransformComp = GetComponentOfType<TransformComponent>())
     {
@@ -158,6 +159,7 @@ void SpinningWheelActor::UpdateComponentPositions()
 
     for (auto& Slice : mSlices)
     {
+        // find 
         float BoundaryAngle = NormalizeAngle(Slice.mStartAngle + mRotationOffset);
         exVector2 LineEnd = AngleToPoint(BoundaryAngle, mRadius);
 
@@ -183,6 +185,7 @@ void SpinningWheelActor::UpdateComponentPositions()
 
 void SpinningWheelActor::Spin(float InitialVelocity)
 {
+    // set the velocity of the wheel
     mSpinVelocity = InitialVelocity;
     mIsSpinning = true;
 }
@@ -193,9 +196,12 @@ void SpinningWheelActor::Tick(float DeltaTime)
 
     if (mIsSpinning)
     {
+        // add friction
         mSpinVelocity *= mDamping;
+        // add current roation offsset + velocity + time since last frame
         mRotationOffset = NormalizeAngle(mRotationOffset + mSpinVelocity * DeltaTime);
 
+        // if the velocity is less than the threshold, stop spinning
         if (std::abs(mSpinVelocity) < VELOCITY_THRESHOLD)
         {
             mSpinVelocity = 0.0f;
