@@ -36,7 +36,7 @@ private:
     float mSpinVelocity = 0.0f;
     float mDamping = 0.98f;
     float mRadius = 0.0f;
-    float mPointerAngle = 90.0f;
+    float mTickerAngle = 90.0f;
     bool  mIsSpinning = false;
 };
 

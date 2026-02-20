@@ -85,6 +85,7 @@ void MyGame::Initialize(exEngineInterface* pEngine)
     mSpinningWheel->AddSlice("Ken", Color2);
     mSpinningWheel->AddSlice("Vi", Color3);*/
     mSpinningWheel->AddMultipleSlices({"Vi", "Ken", "Diana", "PeePee", "PooPoo", "penis John"});
+    //mSpinningWheel->UpdateTickerPosition();
 
     // HUD starts with a prompt to spin
     mHUD = std::make_shared<HUD>(White, String("Press SPACE to spin!"),

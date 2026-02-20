@@ -156,9 +156,12 @@ float SpinningWheelActor::NormalizeAngle(float Angle)
 
 void SpinningWheelActor::UpdateTickerPosition()
 {
-    exVector2 TickerStart = AngleToPoint(mPointerAngle, mRadius + 20.0f);
-    exVector2 TickerEnd = AngleToPoint(mPointerAngle, mRadius * 0.75f);
+    // place ticker start outside of circle
+    exVector2 TickerStart = AngleToPoint(mTickerAngle, mRadius + 20.0f);
+    // place ticker end inside of circle
+    exVector2 TickerEnd = AngleToPoint(mTickerAngle, mRadius * 0.75f);
 
+    // set ticker points
     if (auto TickerComp = mTickerComp.lock())
     {
         TickerComp->SetStart(TickerStart);
@@ -177,19 +180,24 @@ void SpinningWheelActor::UpdateComponentPositions()
 
     for (auto& Slice : mSlices)
     {
-        // find 
+        // new normalized angle of dividing line of slice
         float BoundaryAngle = NormalizeAngle(Slice.mStartAngle + mRotationOffset);
+        // translate angle to world position
         exVector2 LineEnd = AngleToPoint(BoundaryAngle, mRadius);
 
+        //set points new division of the line
         if (auto LineComp = Slice.mLineComp.lock())
         {
             LineComp->SetStart(Center);
             LineComp->SetEnd(LineEnd);
         }
 
+        // new normalized angle of where to draw text
         float TextAngle = NormalizeAngle(Slice.mMidAngle + mRotationOffset);
+        // translate angle to world position with text's radius multiplier
         exVector2 TextPoint = AngleToPoint(TextAngle, mRadius * TEXT_RADIUS_MULT);
 
+        // set text at position
         if (auto TextComp = Slice.mTextComp.lock())
         {
             TextComp->SetOffset(exVector2
@@ -210,7 +218,7 @@ void SpinningWheelActor::Spin(float InitialVelocity)
 
 void SpinningWheelActor::Tick(float DeltaTime)
 {
-    UpdateTickerPosition();
+    //UpdateTickerPosition();
 
     if (mIsSpinning)
     {
@@ -240,15 +248,15 @@ WheelSlice* SpinningWheelActor::GetResult()
         float Start = NormalizeAngle(Slice.mStartAngle + mRotationOffset);
         float End = NormalizeAngle(Slice.mEndAngle + mRotationOffset);
 
-        // 
+        // angle checks
         if (Start <= End) // no wrap around
         {
-            if (mPointerAngle >= Start && mPointerAngle < End)
+            if (mTickerAngle >= Start && mTickerAngle < End)
                 return &Slice;
         }
         else // wrap around
         {
-            if (mPointerAngle >= Start || mPointerAngle < End)
+            if (mTickerAngle >= Start || mTickerAngle < End)
                 return &Slice;
         }
     }
