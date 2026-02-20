@@ -150,6 +150,8 @@
     <ClInclude Include="Game\Public\Actors\Ball.h" />
     <ClInclude Include="Game\Public\Actors\Box.h" />
     <ClInclude Include="Game\Public\Actors\Line.h" />
+    <ClInclude Include="Game\Public\Actors\SpinningWheel.h" />
+    <ClInclude Include="Game\Public\Actors\WheelSlice.h" />
     <ClInclude Include="Game\Public\Component.h" />
     <ClInclude Include="Game\Public\Components\CircleColliderComponent.h" />
     <ClInclude Include="Game\Public\Components\CircleRenderComponent.h" />
@@ -167,7 +169,6 @@
     <ClInclude Include="Game\Public\Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\Downloads\PG29Diana_AOOP_a1\EngineXForStudent\Game\Private\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Actor.cpp" />
     <ClCompile Include="Game\Private\Actors\Ball.cpp" />
     <ClCompile Include="Game\Private\Actors\HUD.cpp" />
@@ -186,6 +187,7 @@
     <ClCompile Include="Game\Private\Components\LineRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Actors\Line.cpp" />
     <ClCompile Include="Game\Public\Actors\HUD.h" />
+    <ClCompile Include="Game\Private\Actors\SpinningWheel.cpp" />
     <ClCompile Include="Game\Public\Components\PhysicsComponent.h" />
     <ClCompile Include="Game\Private\Subsystems\PhysicsSystem.cpp" />
   </ItemGroup>
