@@ -30,8 +30,8 @@ public:
 	static std::shared_ptr<ActorType> SpawnActorOfType(exVector2 SpawnLocation, Args... Arguments)
 	{
 		std::shared_ptr<ActorType> SpawnedActor = std::make_shared<ActorType>(Arguments...);
-		SpawnedActor->BeginPlay();
 		SpawnedActor->AddComponentOfType<TransformComponent>(SpawnLocation);
+		SpawnedActor->BeginPlay();
 
 		return SpawnedActor;
 	}
