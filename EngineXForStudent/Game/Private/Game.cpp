@@ -29,6 +29,9 @@ MyGame::~MyGame()
 
 void MyGame::Initialize(exEngineInterface* pEngine)
 {
+    // generate seed
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
     mEngine = pEngine;
 
     mFontID = mEngine->LoadFont("Resources/Montserrat-Regular.ttf", 32);
@@ -78,9 +81,10 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 
     // Spawn wheel at center screen with radius 200
     mSpinningWheel = Actor::SpawnActorOfType<SpinningWheelActor>(exVector2(500.0f, 300.0f), 200.0f);
-    mSpinningWheel->AddSlice("Diana", Color1);
+    /*mSpinningWheel->AddSlice("Diana", Color1);
     mSpinningWheel->AddSlice("Ken", Color2);
-    mSpinningWheel->AddSlice("Vi", Color3);
+    mSpinningWheel->AddSlice("Vi", Color3);*/
+    mSpinningWheel->AddMultipleSlices({"Vi", "Ken", "Diana", "PeePee", "PooPoo", "penis John"});
 
     // HUD starts with a prompt to spin
     mHUD = std::make_shared<HUD>(White, String("Press SPACE to spin!"),
@@ -139,7 +143,8 @@ void MyGame::Run(float fDeltaT)
     // Space bar spins the wheel
     if (mSpinKey)
     {
-        mSpinningWheel->Spin(360.0f);
+
+        mSpinningWheel->Spin(400 + (rand() % 500));
         if (mHUDText)
         {
             mHUDText->SetText("Spinning...");

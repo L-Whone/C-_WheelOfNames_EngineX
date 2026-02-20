@@ -8,8 +8,8 @@
 
 static constexpr float PI = 3.14159265f;
 static constexpr float DEG_TO_RAD = PI / 180.0f;
-static constexpr float TEXT_RADIUS_MULT = 0.6f;
-static constexpr float VELOCITY_THRESHOLD = 0.5f;
+static constexpr float TEXT_RADIUS_MULT = 0.6f; // where on the slice to print the text
+static constexpr float VELOCITY_THRESHOLD = 0.5f; // when to stop spinning
 
 SpinningWheelActor::SpinningWheelActor(float Radius)
     : Actor(), mRadius(Radius)
@@ -55,6 +55,24 @@ void SpinningWheelActor::BeginPlay()
 
     //position ticker
     UpdateTickerPosition();
+}
+
+void SpinningWheelActor::AddMultipleSlices(std::vector<String> LabelsToAdd)
+{
+    exColor RandomColor;
+    for (int i = 0; i < static_cast<int>(LabelsToAdd.size()); i++)
+    {
+        RandomColor.mColor[0] = rand() % 255;
+        RandomColor.mColor[1] = rand() % 255;
+        RandomColor.mColor[2] = rand() % 255;
+        RandomColor.mColor[3] = rand() % 255;
+
+        AddSlice(LabelsToAdd[i], RandomColor);
+    }
+
+    RecalculateSlices();
+    UpdateComponentPositions();
+
 }
 
 void SpinningWheelActor::AddSlice(const String& Label, exColor SliceColor)
@@ -216,17 +234,19 @@ WheelSlice* SpinningWheelActor::GetResult()
 {
     if (mIsSpinning) return nullptr;
 
+    // iteraet throuh slices
     for (auto& Slice : mSlices)
     {
         float Start = NormalizeAngle(Slice.mStartAngle + mRotationOffset);
         float End = NormalizeAngle(Slice.mEndAngle + mRotationOffset);
 
-        if (Start <= End)
+        // 
+        if (Start <= End) // no wrap around
         {
             if (mPointerAngle >= Start && mPointerAngle < End)
                 return &Slice;
         }
-        else
+        else // wrap around
         {
             if (mPointerAngle >= Start || mPointerAngle < End)
                 return &Slice;
