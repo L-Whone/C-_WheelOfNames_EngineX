@@ -1,6 +1,10 @@
 #include "Game/Public/Actors/TextFileReader.h"
 
 
+TextFileReader::TextFileReader()
+{
+}
+
 TextFileReader::~TextFileReader()
 {
 

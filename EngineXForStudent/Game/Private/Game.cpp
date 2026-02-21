@@ -84,7 +84,11 @@ void MyGame::Initialize(exEngineInterface* pEngine)
     /*mSpinningWheel->AddSlice("Diana", Color1);
     mSpinningWheel->AddSlice("Ken", Color2);
     mSpinningWheel->AddSlice("Vi", Color3);*/
-    mSpinningWheel->AddMultipleSlices({"Vi", "Ken", "Diana", "PeePee", "PooPoo", "penis John"});
+
+    mTextFileReader = Actor::SpawnActorOfType<TextFileReader>(exVector2(0,0));
+    std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
+
+    mSpinningWheel->AddMultipleSlices(listOfNames);
     //mSpinningWheel->UpdateTickerPosition();
 
     // HUD starts with a prompt to spin

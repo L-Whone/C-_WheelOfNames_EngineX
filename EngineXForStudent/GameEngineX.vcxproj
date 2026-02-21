@@ -219,6 +219,7 @@
     <Object Include="OutGame\TransformComponent.obj" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="names.txt" />
     <Text Include="OutGame\GameEngineX.log" />
     <Text Include="OutGame\GameEngineX.vcxproj.FileListAbsolute.txt" />
     <Text Include="OutGame\GameEngineXd.Build.CppClean.log" />

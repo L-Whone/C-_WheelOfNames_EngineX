@@ -1,5 +1,6 @@
 #pragma once
 #include "Game/Public/Components/RenderComponent.h"
+#include "Game/Public/Actor.h"
 
 class TextRenderComponent : public RenderComponent
 {

@@ -6,10 +6,9 @@
 class TextFileReader : public Actor
 {
 public:
+	TextFileReader();
 	~TextFileReader();
 
 	virtual void BeginPlay() override;
 
-private:
-	TextFileReader();
 };

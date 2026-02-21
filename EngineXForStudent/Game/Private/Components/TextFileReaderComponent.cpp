@@ -28,3 +28,4 @@ TextFileReaderComponent::TextFileReaderComponent(std::weak_ptr<Actor> owner) : C
 {
 
 }
+

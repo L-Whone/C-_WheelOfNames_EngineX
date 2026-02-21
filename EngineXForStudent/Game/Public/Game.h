@@ -7,6 +7,7 @@
 #include "Game/Public/Actors/HUD.h"
 #include "Game/Public/Actors/SpinningWheel.h"
 #include "Game/Public/Components/TextRenderComponent.h"
+#include "Game/Public/Actors/TextFileReader.h"
 
 class MyGame : public exGameInterface
 {
@@ -33,4 +34,5 @@ private:
     std::shared_ptr<TextRenderComponent>    mHUDText;
     std::shared_ptr<SpinningWheelActor>     mSpinningWheel;
     bool                                    mSpinKey;
+    std::shared_ptr<TextFileReader>         mTextFileReader;
 };

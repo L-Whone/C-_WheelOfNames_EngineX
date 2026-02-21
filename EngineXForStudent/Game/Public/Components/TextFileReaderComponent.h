@@ -18,4 +18,5 @@ public:
 	std::shared_ptr<std::vector<std::string>> ReadTextFile();
 
 private:
+	TextFileReaderComponent(std::weak_ptr<Actor> owner);
 };
