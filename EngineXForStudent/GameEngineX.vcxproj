@@ -152,12 +152,14 @@
     <ClInclude Include="Game\Public\Actors\Line.h" />
     <ClInclude Include="Game\Public\Actors\SpinningWheel.h" />
     <ClInclude Include="Game\Public\Actors\WheelSlice.h" />
+    <ClInclude Include="Game\Public\Actors\TextFileReader.h" />
     <ClInclude Include="Game\Public\Component.h" />
     <ClInclude Include="Game\Public\Components\CircleColliderComponent.h" />
     <ClInclude Include="Game\Public\Components\CircleRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\LineRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RectangleRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RenderComponent.h" />
+    <ClInclude Include="Game\Public\Components\TextFileReaderComponent.h" />
     <ClInclude Include="Game\Public\Components\TextRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\TransformComponent.h" />
     <ClInclude Include="Game\Public\ComponentTypes.h" />
@@ -188,8 +190,10 @@
     <ClCompile Include="Game\Private\Actors\Line.cpp" />
     <ClCompile Include="Game\Public\Actors\HUD.h" />
     <ClCompile Include="Game\Private\Actors\SpinningWheel.cpp" />
+    <ClCompile Include="Game\Private\Actors\TextFileReader.cpp" />
     <ClCompile Include="Game\Public\Components\PhysicsComponent.h" />
     <ClCompile Include="Game\Private\Subsystems\PhysicsSystem.cpp" />
+    <ClCompile Include="Game\Private\Components\TextFileReaderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Out\EngineX.lib" />
@@ -215,6 +219,7 @@
     <Object Include="OutGame\TransformComponent.obj" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="names.txt" />
     <Text Include="OutGame\GameEngineX.log" />
     <Text Include="OutGame\GameEngineX.vcxproj.FileListAbsolute.txt" />
     <Text Include="OutGame\GameEngineXd.Build.CppClean.log" />
