@@ -35,4 +35,5 @@ private:
     std::shared_ptr<SpinningWheelActor>     mSpinningWheel;
     bool                                    mSpinKey;
     std::shared_ptr<TextFileReader>         mTextFileReader;
+    std::string                             winnerFilePath = "winners.txt";
 };

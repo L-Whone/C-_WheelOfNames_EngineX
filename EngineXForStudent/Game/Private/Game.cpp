@@ -175,6 +175,9 @@ void MyGame::Run(float fDeltaT)
         if (mHUDText)
         {
             mHUDText->SetText("Winner: " + Result->mLabel);
+
+            std::ofstream file("./" + winnerFilePath); //, std::ios::app);
+            file << "\n" + Result->mLabel;
         }
     }
 

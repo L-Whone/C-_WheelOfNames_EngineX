@@ -150,6 +150,7 @@
     <ClInclude Include="Game\Public\Actors\Ball.h" />
     <ClInclude Include="Game\Public\Actors\Box.h" />
     <ClInclude Include="Game\Public\Actors\Line.h" />
+    <ClInclude Include="Game\Public\Actors\List.h" />
     <ClInclude Include="Game\Public\Actors\SpinningWheel.h" />
     <ClInclude Include="Game\Public\Actors\WheelSlice.h" />
     <ClInclude Include="Game\Public\Actors\TextFileReader.h" />
