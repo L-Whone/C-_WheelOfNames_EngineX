@@ -4,6 +4,7 @@
 #include "Engine/Public/EngineTypes.h"
 #include <memory>
 #include <fstream>
+#include <filesystem>
 
 class TextFileReaderComponent : public Component
 {
@@ -13,10 +14,13 @@ public:
 
 	TextFileReaderComponent() = delete;
 
-	// Getter Setters
 
 	std::shared_ptr<std::vector<std::string>> ReadTextFile();
+	bool TextFileUpdated();
+	void SetLastWriteTime();
 
 private:
 	TextFileReaderComponent(std::weak_ptr<Actor> owner);
+	std::string mPath = "names.txt";
+	std::filesystem::file_time_type mLastWriteTime;
 };

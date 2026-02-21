@@ -13,6 +13,7 @@ TextFileReader::~TextFileReader()
 void TextFileReader::BeginPlay()
 {
 	AddComponentOfType<TextFileReaderComponent>();
+	GetComponentOfType<TextFileReaderComponent>()->SetLastWriteTime();
 }
 
 

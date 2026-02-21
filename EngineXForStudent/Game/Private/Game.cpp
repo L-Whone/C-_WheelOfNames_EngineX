@@ -136,6 +136,14 @@ void MyGame::Run(float fDeltaT)
 
     exVector2 BallVelocity(0.0f, 0.0f);
 
+    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
+    {
+        std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
+
+        mSpinningWheel->AddMultipleSlices(listOfNames);
+    }
+
+
     if (mUp)
     {
         BallVelocity.y = -2.5f;
