@@ -67,6 +67,22 @@ public:
 		return nullptr;
 	}
 	
+	template<std::derived_from<Component> ComponentType>
+	bool RemoveComponent(std::weak_ptr<ComponentType> ComponentToRemove) 
+	{
+		if (ComponentToRemove.expired()) return false;
+
+		std::shared_ptr<ComponentType> Locked = ComponentToRemove.lock(); // lock to compare
+
+		auto CompIterator = std::find(mComponents.begin(), mComponents.end(), Locked);
+		if (CompIterator != mComponents.end()) // end() points to one past last elemtn
+		{
+			mComponents.erase(CompIterator);
+			return true;
+		}
+
+		return false;
+	}
 	// Write Function to spawn Actor with a Transform Comp
 #pragma endregion
 };
