@@ -89,6 +89,8 @@ void MyGame::Initialize(exEngineInterface* pEngine)
     std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
 
     mSpinningWheel->AddMultipleSlices(listOfNames);
+    mSpinningWheel->RemoveAllSlices();
+    mSpinningWheel->AddMultipleSlices({ "VI", "dwaind", "dain", " dauibad", " daiojad" });
     //mSpinningWheel->UpdateTickerPosition();
 
     // HUD starts with a prompt to spin

@@ -66,15 +66,11 @@ void SpinningWheelActor::AddMultipleSlices(const std::vector<String>& LabelsToAd
         RandomColor.mColor[0] = rand() % 255;
         RandomColor.mColor[1] = rand() % 255;
         RandomColor.mColor[2] = rand() % 255;
-        RandomColor.mColor[3] = rand() % 255;
+        RandomColor.mColor[3] = (rand() % 100) + 155; // to prevent having an invisible colour
 
         // add label with random colour
         AddSlice(LabelsToAdd[i], RandomColor);
     }
-
-    RecalculateSlices();
-    UpdateComponentPositions();
-
 }
 
 void SpinningWheelActor::ReplaceAllSlices(const std::vector<String>& LabelsToAdd)
@@ -126,6 +122,9 @@ void SpinningWheelActor::RemoveSlice(const int IndexToRemove)
         return;
     }
 
+    RemoveComponent(mSlices[IndexToRemove].mLineComp);
+    RemoveComponent(mSlices[IndexToRemove].mTextComp);
+
     mSlices.erase(mSlices.begin() + IndexToRemove);
 
     RecalculateSlices();
@@ -134,8 +133,14 @@ void SpinningWheelActor::RemoveSlice(const int IndexToRemove)
 
 void SpinningWheelActor::RemoveAllSlices()
 {
-    if (static_cast<int>(mSlices.size()) == 0) return;
+    if (mSlices.empty()) return;
 
+    for (auto& Slice : mSlices)
+    {
+        RemoveComponent(Slice.mLineComp);
+        RemoveComponent(Slice.mTextComp);
+    }
+    
     mSlices.clear();
 
     RecalculateSlices();
