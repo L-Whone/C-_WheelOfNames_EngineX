@@ -16,8 +16,11 @@ public:
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaTime) override;
 
-    void AddMultipleSlices(std::vector<String> LabelsToAdd);
+    void AddMultipleSlices(const std::vector<String>& LabelsToAdd);
+    void ReplaceAllSlices(const std::vector<String>& LabelsToAdd);
     void AddSlice(const String& Label, exColor SliceColor);
+    void RemoveSlice(const int IndexToRemove);
+    void RemoveAllSlices();
     void Spin(float InitialVelocity);
     WheelSlice* GetResult();
 

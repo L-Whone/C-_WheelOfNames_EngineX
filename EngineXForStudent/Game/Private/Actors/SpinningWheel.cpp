@@ -57,8 +57,9 @@ void SpinningWheelActor::BeginPlay()
     UpdateTickerPosition();
 }
 
-void SpinningWheelActor::AddMultipleSlices(std::vector<String> LabelsToAdd)
+void SpinningWheelActor::AddMultipleSlices(const std::vector<String>& LabelsToAdd)
 {
+    // give each label a random colour
     exColor RandomColor;
     for (int i = 0; i < static_cast<int>(LabelsToAdd.size()); i++)
     {
@@ -67,6 +68,7 @@ void SpinningWheelActor::AddMultipleSlices(std::vector<String> LabelsToAdd)
         RandomColor.mColor[2] = rand() % 255;
         RandomColor.mColor[3] = rand() % 255;
 
+        // add label with random colour
         AddSlice(LabelsToAdd[i], RandomColor);
     }
 
@@ -75,11 +77,21 @@ void SpinningWheelActor::AddMultipleSlices(std::vector<String> LabelsToAdd)
 
 }
 
+void SpinningWheelActor::ReplaceAllSlices(const std::vector<String>& LabelsToAdd)
+{
+    RemoveAllSlices();
+    AddMultipleSlices(LabelsToAdd);
+
+    RecalculateSlices();
+    UpdateComponentPositions();
+}
+
 void SpinningWheelActor::AddSlice(const String& Label, exColor SliceColor)
 {
     WheelSlice NewSlice;
     NewSlice.mLabel = Label;
 
+    // add line border to Slice
     auto [LineComp, LineSuccess, LineMsg] = AddComponentOfType<LineRenderComponent>(
         SliceColor,
         exVector2{ 0.0f, 0.0f },
@@ -91,6 +103,7 @@ void SpinningWheelActor::AddSlice(const String& Label, exColor SliceColor)
         NewSlice.mLineComp = LineComp;
     }
 
+    // add text renderer to Slice
     auto [TextComp, TextSuccess, TextMsg] = AddComponentOfType<TextRenderComponent>(
         SliceColor,
         Label, "Resources/Montserrat-Regular.ttf", 14,
@@ -102,6 +115,29 @@ void SpinningWheelActor::AddSlice(const String& Label, exColor SliceColor)
     }
 
     mSlices.push_back(NewSlice);
+    RecalculateSlices();
+    UpdateComponentPositions();
+}
+
+void SpinningWheelActor::RemoveSlice(const int IndexToRemove)
+{
+    if (IndexToRemove >= static_cast<int>(mSlices.size())) {
+        throw std::out_of_range("Index: [" + std::to_string(IndexToRemove) + "] out of range of Wheel mSlices");
+        return;
+    }
+
+    mSlices.erase(mSlices.begin() + IndexToRemove);
+
+    RecalculateSlices();
+    UpdateComponentPositions();
+}
+
+void SpinningWheelActor::RemoveAllSlices()
+{
+    if (static_cast<int>(mSlices.size()) == 0) return;
+
+    mSlices.clear();
+
     RecalculateSlices();
     UpdateComponentPositions();
 }

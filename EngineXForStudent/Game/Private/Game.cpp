@@ -157,7 +157,7 @@ void MyGame::Run(float fDeltaT)
     if (mSpinKey)
     {
 
-        mSpinningWheel->Spin(400 + (rand() % 500));
+        mSpinningWheel->Spin((10000 + (rand() % 10001)));
         if (mHUDText)
         {
             mHUDText->SetText("Spinning...");
