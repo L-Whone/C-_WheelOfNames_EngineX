@@ -104,6 +104,9 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 	header.mColor[3] = 255;
 
 	mWinnerPopup.Show("We have a winner!", "Diana", header);
+	mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);
 	//mWinnerPopup.Hide();
 }
 
@@ -179,5 +182,6 @@ void MyGame::Run(float fDeltaT)
 	}
 
 	PHYSICS_ENGINE.PhysicsUpdate(fDeltaT);
+	mConfettiBurst.Update(fDeltaT);
 	//mBall->SetBallPosition(mTextPosition);
 }

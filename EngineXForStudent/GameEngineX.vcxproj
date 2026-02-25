@@ -153,6 +153,7 @@
     <ClInclude Include="Game\Public\Component.h" />
     <ClInclude Include="Game\Public\Components\CircleColliderComponent.h" />
     <ClInclude Include="Game\Public\Components\CircleRenderComponent.h" />
+    <ClInclude Include="Game\Public\Components\ConfettiBurstComponent.h" />
     <ClInclude Include="Game\Public\Components\LineRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RectangleRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RenderComponent.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Game\Private\Actors\HUD.cpp" />
     <ClCompile Include="Game\Private\Component.cpp" />
     <ClCompile Include="Game\Private\Components\CircleColliderComponent.cpp" />
+    <ClCompile Include="Game\Private\Components\ConfettiBurstComponent.cpp" />
     <ClCompile Include="Game\Private\Components\RectangleRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Components\WinnerPopupComponent.cpp" />

@@ -16,6 +16,7 @@
 #include "Game/Public/Actors/HUD.h"
 #include "Game/Public/Components/TextRenderComponent.h"
 #include "Game/Public/Components/WinnerPopupComponent.h"
+#include "Game/Public/Components/ConfettiBurstComponent.h"
 
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -54,4 +55,5 @@ private:
 	std::shared_ptr<HUD>					mHUD;
 	std::shared_ptr<TextRenderComponent> 	mHUDText;
 	WinnerPopup								mWinnerPopup;
+	ConfettiBurstComponent					mConfettiBurst;
 };
