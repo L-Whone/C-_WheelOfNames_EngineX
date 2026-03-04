@@ -104,8 +104,20 @@ void MyGame::Initialize(exEngineInterface* pEngine)
         String("Resources/Montserrat-Regular.ttf"), 32,
         exVector2{ 0.0f, 0.0f }, 10);
 
-    mHUD->BeginPlay();
-    mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
+	mHUD->BeginPlay();
+	mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
+
+	exColor header; 
+	header.mColor[0] = 130;
+	header.mColor[1] = 170;
+	header.mColor[2] = 150;
+	header.mColor[3] = 255;
+
+	mWinnerPopup.Show("We have a winner!", "Diana", header);
+	mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);
+	//mWinnerPopup.Hide();
 }
 
 const char* MyGame::GetWindowName() const
@@ -191,4 +203,5 @@ void MyGame::Run(float fDeltaT)
     }
 
     PHYSICS_ENGINE.PhysicsUpdate(fDeltaT);
+    mConfettiBurst.Update(fDeltaT);
 }
