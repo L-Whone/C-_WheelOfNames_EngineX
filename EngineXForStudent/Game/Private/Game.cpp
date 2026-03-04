@@ -88,9 +88,15 @@ void MyGame::Initialize(exEngineInterface* pEngine)
     mTextFileReader = Actor::SpawnActorOfType<TextFileReader>(exVector2(0,0));
     std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
 
-    mSpinningWheel->AddMultipleSlices(listOfNames);
-    mSpinningWheel->RemoveAllSlices();
-    mSpinningWheel->AddMultipleSlices({ "VI", "dwaind", "dain", " dauibad", " daiojad" });
+    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileIsNotEmpty())
+    {
+        mSpinningWheel->RemoveAllSlices();
+        mSpinningWheel->AddMultipleSlices(listOfNames);
+    }
+    else
+    {
+        mSpinningWheel->AddMultipleSlices({ "Open", "names.txt", "To", "Input", "Names" });
+    }
     //mSpinningWheel->UpdateTickerPosition();
 
     // HUD starts with a prompt to spin
@@ -140,20 +146,21 @@ void MyGame::Run(float fDeltaT)
 
     if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
     {
+        // Reinitialize the names
+        mSpinningWheel->RemoveAllSlices();
         std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
-
         mSpinningWheel->AddMultipleSlices(listOfNames);
     }
 
 
-    if (mUp)
+    /*if (mUp)
     {
         BallVelocity.y = -2.5f;
     }
     if (mDown)
     {
         BallVelocity.y = 2.5f;
-    }
+    }*/
 
     // Space bar spins the wheel
     if (mSpinKey)

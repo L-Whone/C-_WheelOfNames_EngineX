@@ -224,6 +224,7 @@
     <Text Include="OutGame\GameEngineX.log" />
     <Text Include="OutGame\GameEngineX.vcxproj.FileListAbsolute.txt" />
     <Text Include="OutGame\GameEngineXd.Build.CppClean.log" />
+    <Text Include="winners.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OutGame\GameEngineX.tlog\CL.command.1.tlog" />
