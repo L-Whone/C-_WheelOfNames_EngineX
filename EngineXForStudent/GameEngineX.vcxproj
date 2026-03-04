@@ -157,12 +157,14 @@
     <ClInclude Include="Game\Public\Component.h" />
     <ClInclude Include="Game\Public\Components\CircleColliderComponent.h" />
     <ClInclude Include="Game\Public\Components\CircleRenderComponent.h" />
+    <ClInclude Include="Game\Public\Components\ConfettiBurstComponent.h" />
     <ClInclude Include="Game\Public\Components\LineRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RectangleRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\RenderComponent.h" />
     <ClInclude Include="Game\Public\Components\TextFileReaderComponent.h" />
     <ClInclude Include="Game\Public\Components\TextRenderComponent.h" />
     <ClInclude Include="Game\Public\Components\TransformComponent.h" />
+    <ClInclude Include="Game\Public\Components\WinnerPopupComponent.h" />
     <ClInclude Include="Game\Public\ComponentTypes.h" />
     <ClInclude Include="Game\Public\Game.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
@@ -177,8 +179,10 @@
     <ClCompile Include="Game\Private\Actors\HUD.cpp" />
     <ClCompile Include="Game\Private\Component.cpp" />
     <ClCompile Include="Game\Private\Components\CircleColliderComponent.cpp" />
+    <ClCompile Include="Game\Private\Components\ConfettiBurstComponent.cpp" />
     <ClCompile Include="Game\Private\Components\RectangleRenderComponent.cpp" />
     <ClCompile Include="Game\Private\Components\TextRenderComponent.cpp" />
+    <ClCompile Include="Game\Private\Components\WinnerPopupComponent.cpp" />
     <ClCompile Include="Game\Private\Game.cpp" />
     <ClCompile Include="Game\Private\Main.cpp" />
     <ClCompile Include="Game\Private\Components\TransformComponent.cpp" />
@@ -224,6 +228,7 @@
     <Text Include="OutGame\GameEngineX.log" />
     <Text Include="OutGame\GameEngineX.vcxproj.FileListAbsolute.txt" />
     <Text Include="OutGame\GameEngineXd.Build.CppClean.log" />
+    <Text Include="winners.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OutGame\GameEngineX.tlog\CL.command.1.tlog" />

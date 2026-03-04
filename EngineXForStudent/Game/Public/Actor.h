@@ -27,7 +27,7 @@ private:
 public:
 
 	template<std::derived_from<Actor> ActorType, typename ...Args>
-	static std::shared_ptr<ActorType> SpawnActorOfType(exVector2 SpawnLocation, Args... Arguments)
+	static std::shared_ptr<ActorType> SpawnActorOfType(exVector2 SpawnLocation = exVector2(0,0), Args... Arguments)
 	{
 		std::shared_ptr<ActorType> SpawnedActor = std::make_shared<ActorType>(Arguments...);
 		SpawnedActor->AddComponentOfType<TransformComponent>(SpawnLocation);

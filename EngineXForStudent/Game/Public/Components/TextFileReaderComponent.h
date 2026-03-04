@@ -18,6 +18,7 @@ public:
 	std::shared_ptr<std::vector<std::string>> ReadTextFile();
 	bool TextFileUpdated();
 	void SetLastWriteTime();
+	bool TextFileIsNotEmpty();
 
 private:
 	TextFileReaderComponent(std::weak_ptr<Actor> owner);

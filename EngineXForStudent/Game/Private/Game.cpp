@@ -17,8 +17,6 @@ const char* gWindowName = "PG29 Ken Vi Diana Game Engine";
 MyGame::MyGame()
     : mEngine(nullptr)
     , mFontID(-1)
-    , mUp(false)
-    , mDown(false)
     , mSpinKey(false)
 {
 }
@@ -36,8 +34,6 @@ void MyGame::Initialize(exEngineInterface* pEngine)
 
     mFontID = mEngine->LoadFont("Resources/Montserrat-Regular.ttf", 32);
 
-    mTextPosition.x = 50.0f;
-    mTextPosition.y = 50.0f;
 
     float Radius = 25.0f;
 
@@ -47,59 +43,42 @@ void MyGame::Initialize(exEngineInterface* pEngine)
     White.mColor[2] = 255;
     White.mColor[3] = 255;
 
-    exColor Color1;
-    Color1.mColor[0] = 255;
-    Color1.mColor[1] = 50;
-    Color1.mColor[2] = 150;
-    Color1.mColor[3] = 255;
-
-    exColor Color2;
-    Color2.mColor[0] = 255;
-    Color2.mColor[1] = 150;
-    Color2.mColor[2] = 150;
-    Color2.mColor[3] = 255;
-
-    exColor Color3;
-    Color3.mColor[0] = 130;
-    Color3.mColor[1] = 170;
-    Color3.mColor[2] = 150;
-    Color3.mColor[3] = 255;
-
-    exColor Color4;
-    Color4.mColor[0] = 100;
-    Color4.mColor[1] = 200;
-    Color4.mColor[2] = 255;
-    Color4.mColor[3] = 255;
-
-    mBall_First = Actor::SpawnActorOfType<Ball>(exVector2(200.0f, 300.0f), Radius, Color1);
-    mBall_Second = Actor::SpawnActorOfType<Ball>(exVector2(200.0f, 100.0f), Radius, Color2);
-
-    if (std::shared_ptr<PhysicsComponent> BallPhysicsComp = mBall_Second->GetComponentOfType<PhysicsComponent>())
-    {
-        BallPhysicsComp->SetVelocity(exVector2(0.0f, 0.5f));
-    }
+	mHeaderColor.mColor[0] = 130;
+	mHeaderColor.mColor[1] = 170;
+	mHeaderColor.mColor[2] = 150;
+	mHeaderColor.mColor[3] = 255;
 
     // Spawn wheel at center screen with radius 200
     mSpinningWheel = Actor::SpawnActorOfType<SpinningWheelActor>(exVector2(500.0f, 300.0f), 200.0f);
-    /*mSpinningWheel->AddSlice("Diana", Color1);
-    mSpinningWheel->AddSlice("Ken", Color2);
-    mSpinningWheel->AddSlice("Vi", Color3);*/
 
-    mTextFileReader = Actor::SpawnActorOfType<TextFileReader>(exVector2(0,0));
+    mTextFileReader = Actor::SpawnActorOfType<TextFileReader>();
     std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
 
-    mSpinningWheel->AddMultipleSlices(listOfNames);
-    mSpinningWheel->RemoveAllSlices();
-    mSpinningWheel->AddMultipleSlices({ "VI", "dwaind", "dain", " dauibad", " daiojad" });
-    //mSpinningWheel->UpdateTickerPosition();
+    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileIsNotEmpty())
+    {
+        mSpinningWheel->RemoveAllSlices();
+        mSpinningWheel->AddMultipleSlices(listOfNames);
+    }
+    else
+    {
+        mSpinningWheel->AddMultipleSlices({ "Open", "names.txt", "To", "Input", "Names" });
+    }
 
     // HUD starts with a prompt to spin
     mHUD = std::make_shared<HUD>(White, String("Press SPACE to spin!"),
         String("Resources/Montserrat-Regular.ttf"), 32,
         exVector2{ 0.0f, 0.0f }, 10);
 
-    mHUD->BeginPlay();
-    mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
+	mHUD->BeginPlay();
+	mHUDText = mHUD->GetComponentOfType<TextRenderComponent>();
+
+	
+
+	/*mWinnerPopup.Show("We have a winner!", "Diana", mHeaderColor);
+	mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
+	mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);*/
+	//mWinnerPopup.Hide();
 }
 
 const char* MyGame::GetWindowName() const
@@ -123,37 +102,14 @@ void MyGame::OnEventsConsumed()
     int nKeys = 0;
     const Uint8* pState = SDL_GetKeyboardState(&nKeys);
 
-    mUp = pState[SDL_SCANCODE_UP];
-    mDown = pState[SDL_SCANCODE_DOWN];
     mSpinKey = pState[SDL_SCANCODE_SPACE];
 }
 
 void MyGame::Run(float fDeltaT)
 {
     RENDER_ENGINE.RenderUpdate(mEngine);
-
-    mBall_First->Tick(fDeltaT);
-    mBall_Second->Tick(fDeltaT);
+#pragma region Spinning Wheel
     mSpinningWheel->Tick(fDeltaT);
-
-    exVector2 BallVelocity(0.0f, 0.0f);
-
-    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
-    {
-        std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
-
-        mSpinningWheel->AddMultipleSlices(listOfNames);
-    }
-
-
-    if (mUp)
-    {
-        BallVelocity.y = -2.5f;
-    }
-    if (mDown)
-    {
-        BallVelocity.y = 2.5f;
-    }
 
     // Space bar spins the wheel
     if (mSpinKey)
@@ -166,11 +122,6 @@ void MyGame::Run(float fDeltaT)
         }
     }
 
-    if (std::shared_ptr<PhysicsComponent> BallPhysicsComp = mBall_First->GetComponentOfType<PhysicsComponent>())
-    {
-        BallPhysicsComp->SetVelocity(BallVelocity);
-    }
-
     // Once the wheel stops update the HUD with the winner
     if (WheelSlice* Result = mSpinningWheel->GetResult())
     {
@@ -180,8 +131,23 @@ void MyGame::Run(float fDeltaT)
 
             std::ofstream file("./" + winnerFilePath); //, std::ios::app);
             file << "\n" + Result->mLabel;
+            /*mWinnerPopup.Show("We have a winner!", "Diana", mHeaderColor);
+            mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
+            mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
+            mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);*/
+            //mWinnerPopup.Hide();
         }
     }
-
+#pragma endregion
+#pragma region Text File Reader
+    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
+    {
+        // Reinitialize the names
+        mSpinningWheel->RemoveAllSlices();
+        std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
+        mSpinningWheel->AddMultipleSlices(listOfNames);
+    }
+#pragma endregion
     PHYSICS_ENGINE.PhysicsUpdate(fDeltaT);
+    mConfettiBurst.Update(fDeltaT);
 }
