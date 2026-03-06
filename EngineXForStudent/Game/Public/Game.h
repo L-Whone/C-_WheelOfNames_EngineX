@@ -22,13 +22,25 @@ public:
     virtual void                OnEvent(SDL_Event* pEvent);
     virtual void                OnEventsConsumed();
     virtual void                Run(float fDeltaT);
+
+    
+    enum GameState {
+        Base,
+        Spinning,
+        Celebration,
+        End
+    };
+
 private:
+    GameState                               mGameState = Base;
+
     exEngineInterface* mEngine;
     int                                     mFontID;
     std::shared_ptr<HUD>                    mHUD;
     std::shared_ptr<TextRenderComponent>    mHUDText;
     std::shared_ptr<SpinningWheelActor>     mSpinningWheel;
     bool                                    mSpinKey;
+    bool                                    mCloseKey;
     std::shared_ptr<TextFileReader>         mTextFileReader;
     std::string                             winnerFilePath = "winners.txt";
 	WinnerPopup								mWinnerPopup;

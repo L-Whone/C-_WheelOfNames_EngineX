@@ -103,51 +103,66 @@ void MyGame::OnEventsConsumed()
     const Uint8* pState = SDL_GetKeyboardState(&nKeys);
 
     mSpinKey = pState[SDL_SCANCODE_SPACE];
+    mCloseKey = pState[SDL_SCANCODE_RETURN];
 }
 
 void MyGame::Run(float fDeltaT)
 {
-    RENDER_ENGINE.RenderUpdate(mEngine);
-#pragma region Spinning Wheel
-    mSpinningWheel->Tick(fDeltaT);
 
-    // Space bar spins the wheel
-    if (mSpinKey)
+    // Game State decides logic and keybind effects
+    switch (mGameState)
     {
+    case Base:
+        // Only lets the list of names be altered in the base state -> can't change the list in the middle of spinning
+        #pragma region Text File Reader
+            if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
+            {
+                // Reinitialize the names
+                mSpinningWheel->RemoveAllSlices();
+                std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
+                mSpinningWheel->AddMultipleSlices(listOfNames);
+            }
+        #pragma endregion
+            if (mSpinKey)
+            {
+                mGameState = Spinning;
+                mSpinningWheel->Spin((10000 + (rand() % 10001)));
+                if (mHUDText)
+                {
+                    mHUDText->SetText("Spinning...");
+                }
+            }
+        break;
+    case Spinning:
+        mSpinningWheel->Tick(fDeltaT);
 
-        mSpinningWheel->Spin((10000 + (rand() % 10001)));
-        if (mHUDText)
+        // Once the wheel stops update the HUD with the winner
+        if (WheelSlice* Result = mSpinningWheel->GetResult())
         {
-            mHUDText->SetText("Spinning...");
-        }
-    }
+            if (mHUDText)
+            {
+                mHUDText->SetText("Winner: " + Result->mLabel);
 
-    // Once the wheel stops update the HUD with the winner
-    if (WheelSlice* Result = mSpinningWheel->GetResult())
-    {
-        if (mHUDText)
+                std::ofstream file("./" + winnerFilePath); //, std::ios::app);
+                file << "\n" + Result->mLabel;
+                mWinnerPopup.Show("We have a winner!", Result->mLabel, mHeaderColor);
+                mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
+                mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
+                mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);
+            }
+            mGameState = Celebration;
+        }
+        break;
+    case Celebration:
+        if (mCloseKey)
         {
-            mHUDText->SetText("Winner: " + Result->mLabel);
-
-            std::ofstream file("./" + winnerFilePath); //, std::ios::app);
-            file << "\n" + Result->mLabel;
-            /*mWinnerPopup.Show("We have a winner!", "Diana", mHeaderColor);
-            mConfettiBurst.Spawn(exVector2(400.0f, 100.0f), 100);
-            mConfettiBurst.Spawn(exVector2(200.0f, 100.0f), 100);
-            mConfettiBurst.Spawn(exVector2(600.0f, 100.0f), 100);*/
-            //mWinnerPopup.Hide();
+            mWinnerPopup.Hide();
+            mGameState = Base;
         }
+        break;
     }
-#pragma endregion
-#pragma region Text File Reader
-    if (mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->TextFileUpdated())
-    {
-        // Reinitialize the names
-        mSpinningWheel->RemoveAllSlices();
-        std::vector<std::string> listOfNames = *(mTextFileReader->GetComponentOfType<TextFileReaderComponent>()->ReadTextFile());
-        mSpinningWheel->AddMultipleSlices(listOfNames);
-    }
-#pragma endregion
+
     PHYSICS_ENGINE.PhysicsUpdate(fDeltaT);
     mConfettiBurst.Update(fDeltaT);
+    RENDER_ENGINE.RenderUpdate(mEngine);
 }
